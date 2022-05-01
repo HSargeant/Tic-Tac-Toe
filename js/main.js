@@ -1,7 +1,13 @@
+let xscore= localStorage.getItem("xscore") || 0
+let oscore= localStorage.getItem("oscore") || 0
+document.querySelector("#oscore").innerText= oscore
+document.querySelector("#xscore").innerText= xscore
+
 const boxes = document.querySelectorAll('#box')
 
-document.querySelector("button").addEventListener('click', restartGame)
+document.querySelector("#restart").addEventListener('click', restartGame)
 let oTurn=true
+
 const winCases = [ [0,3,6], [1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6] ]
 
 boxes.forEach(element=>{
@@ -24,6 +30,14 @@ if(win(currentTurn)){
     document.querySelector("#winningMessage").innerText =`The Winner is ${currentTurn}!`
     document.querySelector(".gameOver").classList.add("show")
     console.log(currentTurn, "winner")
+
+    //update storage
+    currentTurn == "X" ? xscore++ : oscore++
+    localStorage.setItem("xscore",xscore)
+    localStorage.setItem("oscore",oscore)
+    document.querySelector("#oscore").innerText= oscore
+    document.querySelector("#xscore").innerText= xscore
+    console.log(xscore,oscore)
 }
 
 nextTurn()
@@ -31,8 +45,6 @@ win(winCases)
 draw(currentTurn)
 console.log(oTurn, currentTurn)
 }
-
-
 
 //check functions
 
@@ -63,6 +75,15 @@ function restartGame(){
         document.querySelector(".gameOver").classList.remove("show")
         element.innerText=""
         element.addEventListener('click',start, {once: true})
-
     })
 }
+
+document.querySelector('.resetScore').addEventListener('click',x=>{
+    oscore=0
+    xscore=0
+    localStorage.setItem("xscore",xscore)
+    localStorage.setItem("oscore",oscore)
+    document.querySelector("#oscore").innerText= oscore
+    document.querySelector("#xscore").innerText= xscore
+    restartGame()
+})
