@@ -70,12 +70,6 @@ h1{
 .three, .six, .nine{
   border-right: none
 }
-.contain{
-
-  border: 1px black solid;
-  margin: 0 auto;
-  display: flex;
-}
 
 /* .box.x,
 .box.o{
@@ -88,11 +82,11 @@ cursor: not-allowed;
 }
 
 .gameOver{
-  height: 50vh;
-  width: 50vw;
+  height: 450px;
+  width: 450px;
   margin: 0 auto;
   display: none;
-  top: -430px;
+  top: -450px;
 
   position: relative;
   
@@ -111,6 +105,74 @@ button{
 .gameOver.show{
   display: flex;
 }
+
+@media screen and (max-width: 600px) { 
+
+  .gameboard{
+    color:rgb(38, 38, 38);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    /* grid-template-columns: repeat(3, auto); */
+  
+  }
+  
+  .box{
+    display: flex;
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    font-size: 6rem;
+    font-weight: 700;
+  
+    /* flex: 1 0 33.3333%; */
+  }
+
+
+  .gameOver{
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    display: none;
+    top: -300px;
+  
+    position: relative;
+    
+    background-color: rgba(0, 0, 0, 0.858);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+  }
+
+  .one,.two,.three{
+    border-top: none;
+  }
+  
+  .seven,.eight,.nine{
+    border-bottom: none;
+  }
+  
+  .one,.four,.seven{
+    border-left: none
+  }
+  
+  .three, .six, .nine{
+    border-right: none
+  }
+
+ }
 
 
 
